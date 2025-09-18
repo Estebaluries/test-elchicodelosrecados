@@ -1,216 +1,559 @@
-<div class="bg-indigo-50">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministerio de B - Servicios a tu medida</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --light-color: #f9f9f9;
+            --dark-color: #333;
+            --gray-color: #95a5a6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%233498db"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 150px 0 100px;
+            margin-top: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #27ae60;
+            transform: translateY(-3px);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .services {
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .service-icon {
+            background-color: var(--primary-color);
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+        
+        .how-it-works {
+            background-color: #f2f7fd;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .step {
+            text-align: center;
+            max-width: 250px;
+            margin: 20px;
+        }
+        
+        .step-number {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+        
+        .testimonials {
+            background-color: white;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial {
+            background-color: var(--light-color);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial p {
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        
+        .client {
+            display: flex;
+            align-items: center;
+        }
+        
+        .client-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--gray-color);
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+        
+        .contact {
+            background-color: #f2f7fd;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .social-links {
+            margin: 20px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .steps {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
     <header>
-        <nav class="bg-indigo-50 border-gray-200 px-4 lg:px-6 py-2.5">
-            <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
-                <a href="#" class="flex items-center"><span class="text-indigo-600 self-center text-xl font-semibold whitespace-nowrap">Errand Master</span></a>
-                <div class="flex items-center lg:order-2">
-                    <a href="#" class="text-gray-800 hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Log in</a><a href="#" class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2">Get Started</a
-                    ><button type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg><svg class="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-                </div>
-                <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                    <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
-                        <li><a href="#" class="block py-2 pr-4 pl-3 hover:text-blue-800 text-black rounded lg:bg-transparent lg:p-0" aria-current="page">Services</a></li>
-                        <li><a href="#" class="block py-2 pr-4 pl-3 hover:text-blue-800 text-black rounded lg:bg-transparent lg:p-0" aria-current="page">About Us</a></li>
-                        <li><a href="#" class="block py-2 pr-4 pl-3 hover:text-blue-800 text-black rounded lg:bg-transparent lg:p-0" aria-current="page">How It Works</a></li>
-                        <li><a href="#" class="block py-2 pr-4 pl-3 hover:text-blue-800 text-black rounded lg:bg-transparent lg:p-0" aria-current="page">Contact</a></li>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">El Chico de los <span>Recados</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#servicios">Servicios</a></li>
+                        <li><a href="#como-funciona">Cómo Funciona</a></li>
+                        <li><a href="#testimonios">Testimonios</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
                     </ul>
-                </div>
+                </nav>
             </div>
-        </nav>
+        </div>
     </header>
-    <div class="relative isolate px-6 pt-14 lg:px-8">
-        <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80" aria-hidden="true"></div>
-        <div class="mx-auto max-w-2xl py-10 sm:py-48 lg:py-10">
-            <div class="text-center">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Your Personal Errand Guy</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">We offer a wide range of services to make your life easier. From dry cleaning to pet care, we've got you covered.</p>
-                <div class="mt-10 flex items-center justify-center gap-x-6">
-                    <a href="#" class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get Started</a><a href="#" class="text-sm font-semibold leading-6 text-gray-900">Learn More<span aria-hidden="true">→</span></a>
+
+    <section class="hero" id="inicio">
+        <div class="container">
+            <h1>Tu tiempo es valioso, deja los recados en nuestras manos</h1>
+            <p>Servicios confiables para simplificar tu vida. Desde lavandería hasta cuidado de mascotas, estamos aquí para ayudarte.</p>
+            <a href="#contacto" class="btn">Solicitar Servicio</a>
+        </div>
+    </section>
+
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos una amplia gama de servicios para hacer tu vida más fácil</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🧺</div>
+                    <div class="service-content">
+                        <h3>Servicio de Lavandería</h3>
+                        <p>Recogemos, lavamos, secamos y doblamos tu ropa, entregándotela lista para usar.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🚗</div>
+                    <div class="service-content">
+                        <h3>Reemplazo de Neumáticos</h3>
+                        <p>Cambiamos tus neumáticos sin que tengas que desplazarte, en tu hogar u oficina.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛒</div>
+                    <div class="service-content">
+                        <h3>Compras y Mandados</h3>
+                        <p>Hacemos tus compras de supermercado, farmacia o cualquier otro recado que necesites.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💐</div>
+                    <div class="service-content">
+                        <h3>Entrega de Flores y Regalos</h3>
+                        <p>Llevamos tus detalles especiales a tus seres queridos en cualquier momento.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏥</div>
+                    <div class="service-content">
+                        <h3>Transporte para Tratamiento Médico</h3>
+                        <p>Te acompañamos y transportamos a citas médicas y tratamientos.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⏳</div>
+                    <div class="service-content">
+                        <h3>Servicios de Espera</h3>
+                        <p>Esperamos por ti en reparaciones, entregas o cualquier trámite que requiera tiempo.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🐾</div>
+                    <div class="service-content">
+                        <h3>Cuidado de Mascotas</h3>
+                        <p>Paseamos, alimentamos y cuidamos a tus mascotas cuando no puedes hacerlo.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <div class="service-content">
+                        <h3>Taller Mecánico</h3>
+                        <p>Llevamos tu automóvil al taller para reparaciones y mantenimiento.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="bg-indigo-600 py-10 sm:py-10">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-2xl lg:text-center">
-            <h2 class="text-base font-semibold leading-7 text-indigo-200">Get it all done</h2>
-            <p class="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">One-stop solution for all your errands</p>
-            <p class="mt-6 text-lg leading-8 text-indigo-200">Choose from a variety of services to simplify your daily tasks</p>
-        </div>
-        <div class="mx-auto mt-16 max-w-2xl sm:mt-20 lg:mt-24 lg:max-w-none">
-            <dl class="grid max-w-xl grid-cols-1 gap-x-8 gap-y-16 lg:max-w-none lg:grid-cols-3">
-                <div class="flex flex-col">
-                    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-white">Convenience</dt>
-                    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-indigo-200">
-                        <p class="flex-auto">Offering a wide range of services for your everyday needs</p>
-                        <p class="mt-6">
-                            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a>
-                        </p>
-                    </dd>
+    </section>
+
+    <section class="how-it-works" id="como-funciona">
+        <div class="container">
+            <div class="section-title">
+                <h2>Cómo Funciona</h2>
+                <p>Un proceso simple para solicitar nuestros servicios</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Solicita</h3>
+                    <p>Contáctanos por teléfono, WhatsApp o nuestro formulario web.</p>
                 </div>
-                <div class="flex flex-col">
-                    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-white">Reliability</dt>
-                    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-indigo-200">
-                        <p class="flex-auto">Trustworthy errand guy to handle all your tasks efficiently</p>
-                        <p class="mt-6">
-                            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a>
-                        </p>
-                    </dd>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Coordina</h3>
+                    <p>Acordamos los detalles del servicio, horario y ubicación.</p>
                 </div>
-                <div class="flex flex-col">
-                    <dt class="flex items-center gap-x-3 text-base font-semibold leading-7 text-white">Flexibility</dt>
-                    <dd class="mt-4 flex flex-auto flex-col text-base leading-7 text-indigo-200">
-                        <p class="flex-auto">Customizable services to suit your specific requirements</p>
-                        <p class="mt-6">
-                            <a href="#" class="text-sm font-semibold leading-6 text-white">Learn more <span aria-hidden="true">→</span></a>
-                        </p>
-                    </dd>
-                </div>
-            </dl>
-        </div>
-    </div>
-</div>
-<div class="bg-white py-24 sm:py-32">
-    <div class="mx-auto max-w-7xl px-6 lg:px-8">
-        <div class="mx-auto max-w-4xl sm:text-center">
-            <h2 class="text-base font-semibold leading-7 text-indigo-600">Choose the plan that fits your needs</h2>
-            <p class="mt-2 text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">Flexible pricing options for all your errand needs</p>
-        </div>
-        <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600 sm:text-center">Select the plan that best suits your lifestyle and let us take care of all your errands</p>
-        <div class="mt-20 flow-root">
-            <div class="isolate -mt-16 grid max-w-sm grid-cols-1 gap-y-16 divide-y divide-gray-100 sm:mx-auto lg:-mx-8 lg:mt-0 lg:max-w-none lg:grid-cols-3 lg:divide-x lg:divide-y-0 xl:-mx-4">
-                <div class="pt-16 lg:px-8 lg:pt-0 xl:px-14">
-                    <h3 class="text-base font-semibold leading-7 text-gray-900">Starter Plan</h3>
-                    <p class="mt-6 flex items-baseline gap-x-1">
-                        <span class="text-5xl font-bold tracking-tight text-gray-900">$15</span><span class="text-sm font-semibold leading-6 text-gray-600">/<!-- -->per errand</span>
-                    </p>
-                    <a href="#" class="mt-10 block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
-                    <p class="mt-10 text-sm font-semibold leading-6 text-gray-900">Ideal for occasional errands</p>
-                    <ul role="list" class="mt-6 space-y-3 text-sm leading-6 text-gray-600">
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Dry cleaning
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Tyre replacement
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Purchases
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Flower delivery
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Medical treatment transportation
-                        </li>
-                    </ul>
-                </div>
-                <div class="pt-16 lg:px-8 lg:pt-0 xl:px-14">
-                    <h3 class="text-base font-semibold leading-7 text-gray-900">Standard Plan</h3>
-                    <p class="mt-6 flex items-baseline gap-x-1">
-                        <span class="text-5xl font-bold tracking-tight text-gray-900">$30</span><span class="text-sm font-semibold leading-6 text-gray-600">/<!-- -->per month</span>
-                    </p>
-                    <a href="#" class="mt-10 block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
-                    <p class="mt-10 text-sm font-semibold leading-6 text-gray-900">Perfect for regular errands</p>
-                    <ul role="list" class="mt-6 space-y-3 text-sm leading-6 text-gray-600">
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Waiting services
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Repairs
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Deliveries
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Pet care
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Taking car to the shop for repairs and maintenance
-                        </li>
-                    </ul>
-                </div>
-                <div class="pt-16 lg:px-8 lg:pt-0 xl:px-14">
-                    <h3 class="text-base font-semibold leading-7 text-gray-900">Premium Plan</h3>
-                    <p class="mt-6 flex items-baseline gap-x-1">
-                        <span class="text-5xl font-bold tracking-tight text-gray-900">$50</span><span class="text-sm font-semibold leading-6 text-gray-600">/<!-- -->per month</span>
-                    </p>
-                    <a href="#" class="mt-10 block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Get started</a>
-                    <p class="mt-10 text-sm font-semibold leading-6 text-gray-900">Ultimate convenience for all your errands</p>
-                    <ul role="list" class="mt-6 space-y-3 text-sm leading-6 text-gray-600">
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>All services included in Starter and Standard plans
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Priority scheduling
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>24/7 support
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Personal errand assistant
-                        </li>
-                        <li class="flex gap-x-3">
-                            <svg class="flex-shrink-0 w-5 h-5 text-green-500 dark:text-green-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>Exclusive discounts
-                        </li>
-                    </ul>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Disfruta</h3>
+                    <p>Nos encargamos de todo mientras tú aprovechas tu tiempo.</p>
                 </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="bg-indigo-600">
-    <div class="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
-        <div class="mx-auto max-w-2xl text-center">
-            <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl"><br />Let us take care of your to-do list</h2>
-            <p class="mx-auto mt-6 max-w-xl text-lg leading-8 text-indigo-200">From dry cleaning to pet care, we've got you covered. Book our services today!</p>
-            <div class="mt-10 flex items-center justify-center gap-x-6">
-                <a href="#" class="rounded-md bg-white px-3.5 py-2.5 text-sm font-semibold text-indigo-600 shadow-sm hover:bg-indigo-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Book Now</a
-                ><a href="#" class="text-sm font-semibold leading-6 text-white"
-                    >Learn More<!-- -->
-                    <span aria-hidden="true">→</span></a
-                >
+    </section>
+
+    <section class="testimonials" id="testimonios">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimonios</h2>
+                <p>Lo que nuestros clientes dicen sobre nosotros</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial">
+                    <p>"El servicio de lavandería me ha salvado la vida. Ya no paso mis fines de semana lavando ropa. ¡Totalmente recomendado!"</p>
+                    <div class="client">
+                        <div class="client-avatar">M</div>
+                        <div class="client-info">
+                            <h4>María González</h4>
+                            <p>Cliente frecuente</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Llevaron mi auto al taller y me lo devolvieron listo. No tuve que perder tiempo en esperas. Excelente servicio."</p>
+                    <div class="client">
+                        <div class="client-avatar">C</div>
+                        <div class="client-info">
+                            <h4>Carlos Mendoza</h4>
+                            <p>Cliente ocasional</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p>"Siempre confío en ellos para el cuidado de mi perro cuando viajo. Son responsables y cariñosos con las mascotas."</p>
+                    <div class="client">
+                        <div class="client-avatar">A</div>
+                        <div class="client-info">
+                            <h4>Ana Torres</h4>
+                            <p>Cliente habitual</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<div class="bg-white">
-    <div class="mx-auto max-w-7xl px-6 py-24 sm:pt-32 lg:px-8 lg:py-40">
-        <div class="lg:grid lg:grid-cols-12 lg:gap-8">
-            <div class="lg:col-span-5">
-                <h2 class="text-2xl font-bold leading-10 tracking-tight text-gray-900">Frequently asked questions</h2>
-                <p class="mt-4 text-base leading-7 text-gray-600">
-                    Can’t find the answer you’re looking for? Reach out to our<!-- -->
-                    <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">customer support</a>
-                    <!-- -->team.
-                </p>
+    </section>
+
+    <section class="contact" id="contacto">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contacto</h2>
+                <p>Solicita un servicio o solicita más información</p>
             </div>
-            <div class="mt-10 lg:col-span-7 lg:mt-0">
-                <dl class="space-y-10">
-                    <div>
-                        <dt class="text-base font-semibold leading-7 text-gray-900">What services do you offer?</dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">We offer services such as dry cleaning, tyre replacement, purchases, flower delivery, medical treatment transportation, waiting services like repairs, deliveries, pet care, and taking cars to the shop for repairs and maintenance.</dd>
+            <div class="contact-form">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" required>
                     </div>
-                    <div>
-                        <dt class="text-base font-semibold leading-7 text-gray-900">How do I schedule a service?</dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">You can schedule a service by contacting us through our website or giving us a call. We will work with you to find a convenient time for the service.</dd>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
                     </div>
-                    <div>
-                        <dt class="text-base font-semibold leading-7 text-gray-900">Do you offer emergency services?</dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Yes, we offer emergency services for situations like medical treatment transportation or urgent repairs. Please contact us immediately for assistance.</dd>
+                    <div class="form-group">
+                        <label for="phone">Teléfono</label>
+                        <input type="tel" id="phone" required>
                     </div>
-                    <div>
-                        <dt class="text-base font-semibold leading-7 text-gray-900">What areas do you serve?</dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">We serve a wide range of areas within our city. Please contact us to inquire about specific locations and availability.</dd>
+                    <div class="form-group">
+                        <label for="service">Servicio de interés</label>
+                        <select id="service" required>
+                            <option value="">Selecciona un servicio</option>
+                            <option value="lavanderia">Servicio de Lavandería</option>
+                            <option value="neumaticos">Reemplazo de Neumáticos</option>
+                            <option value="compras">Compras y Mandados</option>
+                            <option value="flores">Entrega de Flores y Regalos</option>
+                            <option value="transporte">Transporte Médico</option>
+                            <option value="espera">Servicios de Espera</option>
+                            <option value="mascotas">Cuidado de Mascotas</option>
+                            <option value="taller">Taller Mecánico</option>
+                        </select>
                     </div>
-                    <div>
-                        <dt class="text-base font-semibold leading-7 text-gray-900">How much do your services cost?</dt>
-                        <dd class="mt-2 text-base leading-7 text-gray-600">Our pricing varies depending on the service requested. Please contact us for a quote tailored to your specific needs.</dd>
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" required></textarea>
                     </div>
-                </dl>
+                    <button type="submit" class="btn">Enviar Solicitud</button>
+                </form>
             </div>
         </div>
-    </div>
-</div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">El Chico de los <span>Recados</span></div>
+                <p>Simplificando tu vida desde 2023</p>
+                <div class="social-links">
+                    <a href="#">📱</a>
+                    <a href="#">💬</a>
+                    <a href="#">📧</a>
+                </div>
+                <p>Teléfono: (657) 141-1017 | Email: info@elchicodelosrecados.com</p>
+                <p>&copy; 2023 El Chico de los Recados. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
